@@ -4,9 +4,13 @@ services:
     image: mysql:5.7
     volumes:
       - ./mysql:/etc/mysql/conf.d
-      - ./data:/var/lib/mysql
+      - ./db-data:/var/lib/mysql/data
     environment:
       MYSQL_DATABASE: site
       MYSQL_ROOT_PASSWORD: mudarSenh@
     ports:
       - "3306:3306"
+    container_name: meu_banco
+
+volumes:
+  db-data:
