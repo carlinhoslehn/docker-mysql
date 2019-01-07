@@ -2,15 +2,20 @@ version: '3'
 services:
   db:
     image: mysql:5.7
+    restart: always
+    command: --explicit-defaults-for-timestamp=ON
     volumes:
       - ./mysql:/etc/mysql/conf.d
-      - ./db-data:/var/lib/mysql/data
+      - ./db-data:/var/lib/mysql
     environment:
       MYSQL_DATABASE: site
-      MYSQL_ROOT_PASSWORD: mudarSenh@
+      MYSQL_USER: site
+      MYSQL_PASSWORD: secret000
+      MYSQL_ROOT_PASSWORD: secret000
     ports:
-      - "3306:3306"
+      - "127.0.0.1:3306:3306"
     container_name: meu_banco
+    restart: always
 
 volumes:
   db-data:
